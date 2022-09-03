@@ -11,6 +11,11 @@
         {
             return self.Intersects(other, false);
         }
+
+        internal static NullReferenceException NullBody()
+        {
+            return new NullReferenceException("Collider has not been given a body.");
+        }
         internal static NotImplementedException NotImplemented(ICollider2D other)
         {
             return new NotImplementedException($"{other.GetType().FullName} intersection not implemented.");

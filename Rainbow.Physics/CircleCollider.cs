@@ -8,10 +8,11 @@ namespace Rainbow.Physics
     /// </summary>
     public class CircleCollider : ICollider2D
     {
+        public KineticBody2D? Body { get; set; }
         /// <summary>
         ///     Gets or sets the center of the circle.
         /// </summary>
-        public Vector2 Center { get; set; }
+        public Vector2 Center => Body?.Position ?? Vector2.Zero;
         /// <summary>
         ///     Gets or sets the radius of the circle.
         /// </summary>
@@ -23,6 +24,8 @@ namespace Rainbow.Physics
 
         public bool Intersects(ICollider2D other, bool throwback)
         {
+            if (Body == null || other.Body == null) throw ICollider2DExt.NullBody();
+
             if (other is CircleCollider circle)
             {
                 float dx = Center.X - circle.Center.X;
@@ -61,6 +64,11 @@ namespace Rainbow.Physics
                 return other.Intersects(this, true);
             }
             throw ICollider2DExt.NotImplemented(other);
+        }
+
+        bool ICollider2D.Intersects(ICollider2D other, bool throwback)
+        {
+            throw new NotImplementedException();
         }
     }
 }

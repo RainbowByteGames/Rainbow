@@ -8,6 +8,10 @@ namespace Rainbow.Physics
     public interface ICollider2D
     {
         /// <summary>
+        ///     Gets the parent of this collider.
+        /// </summary>
+        public KineticBody2D? Body { get; internal set; }
+        /// <summary>
         ///     Gets the bounds of this collider.
         /// </summary>
         public abstract RectangleF Bounds { get; }
