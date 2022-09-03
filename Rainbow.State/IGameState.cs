@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace Rainbow.State
+namespace HappiiDreamer.Rainbow.State
 {
     /// <summary>
     ///     An interface containing all relavent methods for a game state.

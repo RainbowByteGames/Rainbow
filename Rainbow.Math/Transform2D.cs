@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Rainbow.Math
+namespace HappiiDreamer.Rainbow.Math
 {
     /// <summary>
     ///     A structure containing 2D position, scale, and rotation.

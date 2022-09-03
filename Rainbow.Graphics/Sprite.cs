@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HappiiDreamer.Rainbow.Math;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Rainbow.Math;
 
-namespace Rainbow.Graphics
+namespace HappiiDreamer.Rainbow.Graphics
 {
     /// <summary>
     ///     A drawable object module for rendering sprites to the screen.

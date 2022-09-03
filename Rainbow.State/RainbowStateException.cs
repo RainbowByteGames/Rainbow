@@ -1,4 +1,4 @@
-﻿namespace Rainbow.State
+﻿namespace HappiiDreamer.Rainbow.State
 {
     /// <summary>
     ///     An exception for state errors.

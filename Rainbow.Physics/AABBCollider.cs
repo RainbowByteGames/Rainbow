@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Rainbow.Math;
+﻿using HappiiDreamer.Rainbow.Math;
+using Microsoft.Xna.Framework;
 
-namespace Rainbow.Physics
+namespace HappiiDreamer.Rainbow.Physics
 {
     /// <summary>
     ///     An Axis-Aligned Bounding Box collider.

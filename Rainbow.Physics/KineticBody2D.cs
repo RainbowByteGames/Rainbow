@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Rainbow.Physics
+namespace HappiiDreamer.Rainbow.Physics
 {
     public class KineticBody2D
     {

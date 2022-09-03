@@ -1,6 +1,6 @@
-﻿using Rainbow.Math;
+﻿using HappiiDreamer.Rainbow.Math;
 
-namespace Rainbow.Physics
+namespace HappiiDreamer.Rainbow.Physics
 {
     /// <summary>
     ///     An interface which describes a 2D collider.

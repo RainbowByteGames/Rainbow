@@ -1,4 +1,4 @@
-﻿namespace Rainbow.Physics
+﻿namespace HappiiDreamer.Rainbow.Physics
 {
     public static class ICollider2DExt
     {
