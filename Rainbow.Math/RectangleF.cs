@@ -1,12 +1,11 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace Rainbow.Math
 {
     /// <summary>
     ///     The floating-point equivalent of Microsoft.Xna.Framework.Rectangle
     /// </summary>
-    public struct RectangleF : IEquatable<RectangleF>, IEquatable<Rectangle>
+    public struct RectangleF : IEquatable<RectangleF>
     {
         public float X, Y, Width, Height;
 
@@ -69,6 +68,14 @@ namespace Rainbow.Math
         public float Bottom
         {
             get => Y + Height;
+        }
+
+        public RectangleF(float x, float y, float width, float height)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
         }
 
         /// <summary>
