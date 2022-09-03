@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title></Title>
-    <Version>0.1.0-pre</Version>
+    <Version>0.1.1-pre</Version>
     <Authors>HappiiDreamer</Authors>
 	<AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
