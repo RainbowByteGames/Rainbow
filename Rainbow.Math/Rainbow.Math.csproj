@@ -7,7 +7,7 @@
     <AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
 	<Authors>HappiiDreamer</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.0-pre</Version>
   </PropertyGroup>
 
   <ItemGroup>
