@@ -25,17 +25,18 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: Deploy Rainbow.Graphics to Nuget
-      uses: brandedoutcast/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: Rainbow.Graphics/Rainbow.Graphics.csproj
-        TAG_COMMIT: false
-        NUGET_KEY: ${{secrets.NUGET_KEY}}
 
     - name: Deploy Rainbow.Math to Nuget
       uses: brandedoutcast/publish-nuget@v2
       with:
         PROJECT_FILE_PATH: Rainbow.Math/Rainbow.Math.csproj
+        TAG_COMMIT: false
+        NUGET_KEY: ${{secrets.NUGET_KEY}}
+
+    - name: Deploy Rainbow.Graphics to Nuget
+      uses: brandedoutcast/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: Rainbow.Graphics/Rainbow.Graphics.csproj
         TAG_COMMIT: false
         NUGET_KEY: ${{secrets.NUGET_KEY}}
 
