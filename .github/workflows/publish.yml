@@ -27,7 +27,7 @@ jobs:
 
 
     - name: Deploy Rainbow.Math to Nuget
-      uses: rohith/publish-nuget@v2
+      uses: alirezanet/publish-nuget@v3.0.4
       with:
         PROJECT_FILE_PATH: Rainbow.Math/Rainbow.Math.csproj
         TAG_COMMIT: false
