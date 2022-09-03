@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
+	<Authors>HappiiDreamer</Authors>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
