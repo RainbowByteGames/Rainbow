@@ -45,13 +45,13 @@ namespace HappiiDreamer.Rainbow.State
         ///     enters the state. The instance will be a
         ///     fresh instance.
         /// </summary>
-        public abstract void Enter();
+        public abstract void Enter(GameState? from);
         /// <summary>
         ///     This is called when the state manager
         ///     leaves the state. The instance is destoried
         ///     afterwords.
         /// </summary>
-        public virtual void Leave() { }
+        public virtual void Leave(GameState? to) { }
 
         /// <summary>
         ///     Updates the game state.

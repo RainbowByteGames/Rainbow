@@ -48,9 +48,12 @@ namespace HappiiDreamer.Rainbow.State
         /// <exception cref="RainbowStateException"></exception>
         public void Goto(int id)
         {
-            CurrentState?.Leave();
-            CurrentState = CreateState(id);
-            CurrentState.Enter();
+            GameState? from = CurrentState;
+            GameState to = CreateState(id);
+
+            from?.Leave(to);
+            CurrentState = to;
+            to.Enter(from);
         }
         private GameState CreateState(int id)
         {
