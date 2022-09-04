@@ -35,13 +35,13 @@ namespace HappiiDreamer.Rainbow
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Loads the states' content.
-            States.LoadContent(Content);
+            States.LoadContent();
             States.Goto(0);
         }
         protected override void UnloadContent()
         {
             // Unload the states' content.
-            States.UnloadContent(Content);
+            States.UnloadContent();
             // Unload content
             Content.Unload();
         }
