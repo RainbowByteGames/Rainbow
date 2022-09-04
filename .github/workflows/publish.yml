@@ -53,3 +53,10 @@ jobs:
         PROJECT_FILE_PATH: Rainbow.State/Rainbow.State.csproj
         TAG_COMMIT: false
         NUGET_KEY: ${{secrets.NUGET_KEY}}
+
+    - name: Deploy Rainbow to Nuget
+      uses: alirezanet/publish-nuget@v3.0.4
+      with:
+        PROJECT_FILE_PATH: Rainbow/Rainbow.csproj
+        TAG_COMMIT: false
+        NUGET_KEY: ${{secrets.NUGET_KEY}}
