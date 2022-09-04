@@ -1,44 +1,70 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace HappiiDreamer.Rainbow.State
 {
     /// <summary>
-    ///     A class which represents a game state. Implementations of
-    ///     this class should not have a constructor. Use GameState.Load
-    ///     instead.
+    ///     A class which represents a game state and attempts to mirror
+    ///     the main Game class.
     /// </summary>
     public abstract class GameState : IGameState
     {
         /// <summary>
+        ///     Gets the game this state belongs to.
+        /// </summary>
+        public Game Game => States.Game;
+        /// <summary>
+        ///     Gets whether the game is active.
+        /// </summary>
+        public bool IsActive => Game.IsActive;
+        /// <summary>
+        ///     Gets the game's content manager.
+        /// </summary>
+        public ContentManager Content => Game.Content;
+        /// <summary>
+        ///     Gets the game's graphics device.
+        /// </summary>
+        public GraphicsDevice GraphicsDevice => Game.GraphicsDevice;
+        /// <summary>
+        ///     Gets the game's window.
+        /// </summary>
+        public GameWindow Window => Game.Window;
+
+        /// <summary>
         ///     Gets or sets the state manager for this state.
         /// </summary>
-        public StateManager Manager { get; }
+        public StateManager States { get; }
         /// <summary>
         ///     Gets or sets the ID for this state in the
         ///     state manager.
         /// </summary>
         public int ID { get; }
 
-        public GameState(StateManager manager, int id)
+        public GameState(StateManager states, int id)
         {
-            this.Manager = manager;
+            this.States = states;
             this.ID = id;
         }
+
+        /// <summary>
+        ///     Exits the game.
+        /// </summary>
+        public void Exit() => Game.Exit();
 
         /// <summary>
         ///     Loads the content that is needed for the
         ///     state. This is only called once.
         /// </summary>
         /// <param name="content"></param>
-        public virtual void LoadContent(ContentManager content) { }
+        public virtual void LoadContent() { }
         /// <summary>
         ///     Unloads the content which was loaded
         ///     previously. Content.Unload should not be
         ///     called here.
         /// </summary>
         /// <param name="content"></param>
-        public virtual void UnloadContent(ContentManager content) { }
+        public virtual void UnloadContent() { }
 
         /// <summary>
         ///     This is called when the state manager
@@ -84,16 +110,22 @@ namespace HappiiDreamer.Rainbow.State
         public virtual void EndDraw() { }
 
         /// <summary>
-        ///     Called when a the app gains focus.
+        ///     Called when the app gains focus.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
         public virtual void OnActivated(object? sender, EventArgs args) { }
         /// <summary>
-        ///     Called whne the app loses focus.
+        ///     Called when the app loses focus.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
         public virtual void OnDeactivated(object? sender, EventArgs args) { }
+        /// <summary>
+        ///     Called when the app is exiting.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public virtual void OnExiting(object? sender, EventArgs args) { }
     }
 }

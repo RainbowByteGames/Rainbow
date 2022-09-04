@@ -70,11 +70,11 @@ namespace HappiiDreamer.Rainbow.State
         /// </summary>
         /// <param name="content"></param>
         /// <exception cref="RainbowStateException"></exception>
-        public void LoadContent(ContentManager content)
+        public void LoadContent()
         {
             for (int i = 0; i < States.Count; i++)
             {
-                CreateState(i).LoadContent(content);
+                CreateState(i).LoadContent();
             }
             IsContentLoaded = true;
         }
@@ -84,11 +84,11 @@ namespace HappiiDreamer.Rainbow.State
         /// </summary>
         /// <param name="content"></param>
         /// <exception cref="RainbowStateException"></exception>
-        public void UnloadContent(ContentManager content)
+        public void UnloadContent()
         {
             for (int i = 0; i < States.Count; i++)
             {
-                CreateState(i).UnloadContent(content);
+                CreateState(i).UnloadContent();
             }
             IsContentLoaded = false;
         }
@@ -100,6 +100,11 @@ namespace HappiiDreamer.Rainbow.State
         {
             CurrentState?.Update(gameTime);
         }
+        /// <summary>
+        ///     Calls FixedUpdate on the current state.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public virtual void FixedUpdate(GameTime gameTime) { }
 
         /// <summary>
         ///     Calls BeginDraw on the current state.
@@ -143,6 +148,15 @@ namespace HappiiDreamer.Rainbow.State
         public void OnDeactivated(object? sender, EventArgs e)
         {
             CurrentState?.OnDeactivated(sender, e);
+        }
+        /// <summary>
+        ///     Calls OnExiting on the current state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnExiting(object? sender, EventArgs e)
+        {
+            CurrentState?.OnExiting(sender, e);
         }
     }
 }

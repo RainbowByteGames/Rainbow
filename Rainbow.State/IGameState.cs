@@ -8,8 +8,10 @@ namespace HappiiDreamer.Rainbow.State
     /// </summary>
     public interface IGameState
     {
-        public void LoadContent(ContentManager content) { }
-        public void UnloadContent(ContentManager content) { }
+        public Game Game { get; }
+        
+        public void LoadContent() { }
+        public void UnloadContent() { }
 
         public void Update(GameTime gameTime);
 
@@ -19,5 +21,6 @@ namespace HappiiDreamer.Rainbow.State
 
         public void OnActivated(object? sender, EventArgs e);
         public void OnDeactivated(object? sender, EventArgs e);
+        public void OnExiting(object? sender, EventArgs e);
     }
 }
