@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rainbow.Graphics", "Rainbow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rainbow.Physics", "Rainbow.Physics\Rainbow.Physics.csproj", "{C7167B50-1067-446D-A857-244E7596A63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rainbow", "Rainbow\Rainbow.csproj", "{50A7B543-D36E-4A3F-B17A-E1B622CFD35D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rainbow", "Rainbow\Rainbow.csproj", "{BA4BBEA3-9A1D-4A43-ABE0-6ED9BCBAC603}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{C7167B50-1067-446D-A857-244E7596A63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7167B50-1067-446D-A857-244E7596A63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7167B50-1067-446D-A857-244E7596A63A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50A7B543-D36E-4A3F-B17A-E1B622CFD35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50A7B543-D36E-4A3F-B17A-E1B622CFD35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50A7B543-D36E-4A3F-B17A-E1B622CFD35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50A7B543-D36E-4A3F-B17A-E1B622CFD35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA4BBEA3-9A1D-4A43-ABE0-6ED9BCBAC603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA4BBEA3-9A1D-4A43-ABE0-6ED9BCBAC603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA4BBEA3-9A1D-4A43-ABE0-6ED9BCBAC603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA4BBEA3-9A1D-4A43-ABE0-6ED9BCBAC603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
