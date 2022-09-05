@@ -9,10 +9,12 @@ namespace HappiiDreamer.Rainbow.Physics
     public class CircleCollider : ICollider2D
     {
         public KineticBody2D? Body { get; set; }
+        public Vector2 Offset { get; set; }
+
         /// <summary>
         ///     Gets or sets the center of the circle.
         /// </summary>
-        public Vector2 Center => Body?.Position ?? Vector2.Zero;
+        public Vector2 Center => (Body?.Position ?? Vector2.Zero) + Offset;
         /// <summary>
         ///     Gets or sets the radius of the circle.
         /// </summary>

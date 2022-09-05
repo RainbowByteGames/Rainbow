@@ -1,4 +1,5 @@
 ﻿using HappiiDreamer.Rainbow.Math;
+using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {
@@ -12,15 +13,19 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public KineticBody2D? Body { get; internal set; }
         /// <summary>
+        ///     Gets or sets the position offset.
+        /// </summary>
+        public Vector2 Offset { get; set; }
+        /// <summary>
         ///     Gets the bounds of this collider.
         /// </summary>
-        public abstract RectangleF Bounds { get; }
+        public RectangleF Bounds { get; }
         /// <summary>
         ///     Checks whether this collider intersects the other collider.
         /// </summary>
         /// <param name="other"></param>
         /// <param name="throwback">Whether this method is thrown back from the other collider</param>
         /// <returns></returns>
-        public abstract bool Intersects(ICollider2D other, bool throwback);
+        public bool Intersects(ICollider2D other, bool throwback);
     }
 }
