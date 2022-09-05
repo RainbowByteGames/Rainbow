@@ -5,18 +5,18 @@ namespace HappiiDreamer.Rainbow.Graphics
 {
     /// <summary>
     ///     A class which can project and unproject a virtual resolution onto
-    ///     the viewport.
+    ///     the viewport and where the origin is at the center.
     /// </summary>
     public class Camera2D
     {
         /// <summary>
         ///     Gets the transformation matrix.
         /// </summary>
-        public Matrix Transform { get; private set; }
+        public Matrix ProjectionMatrix { get; private set; }
         /// <summary>
         ///     Gets the inverted transformation matrix.
         /// </summary>
-        public Matrix InverseTransform { get; private set; }
+        public Matrix UnprojectionMatrix { get; private set; }
 
         /// <summary>
         ///     Gets or sets the virtual height (double the orthographic size).
@@ -31,6 +31,11 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// </summary>
         public float OrthographicSize { get; set; }
 
+        /// <summary>
+        ///     Gets or sets whether the center should be the origin.
+        ///     Default: true
+        /// </summary>
+        public bool CenterOrigin { get; set; } = true;
         /// <summary>
         ///     Gets or sets the camera's position in the world.
         /// </summary>
@@ -58,10 +63,15 @@ namespace HappiiDreamer.Rainbow.Graphics
         public void UpdateMatrix(Viewport viewport)
         {
             // Create initial viewport.
-            Matrix m = Matrix.Multiply(
-                Matrix.CreateScale(viewport.Height / VirtualHeight),
-                Matrix.CreateTranslation(viewport.Width / 2, viewport.Height / 2, 0)
-            );
+            Matrix m = Matrix.CreateScale(viewport.Height / VirtualHeight);
+
+            // Center the origin.
+            if (CenterOrigin)
+            {
+                m = Matrix.Multiply(
+                    m, Matrix.CreateTranslation(viewport.Width / 2, viewport.Height / 2, 0)
+                );
+            }
 
             // Apply zoom
             m = Matrix.Multiply(
@@ -73,8 +83,8 @@ namespace HappiiDreamer.Rainbow.Graphics
                 Matrix.CreateTranslation(-Position.X, -Position.Y, 0), m
             );
 
-            Transform = m;
-            InverseTransform = Matrix.Invert(m);
+            ProjectionMatrix = m;
+            UnprojectionMatrix = Matrix.Invert(m);
         }
 
         /// <summary>
@@ -84,7 +94,7 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// <returns></returns>
         public Vector2 ScreenToWorld(Vector2 position)
         {
-            return Vector2.Transform(position, InverseTransform);
+            return Vector2.Transform(position, UnprojectionMatrix);
         }
         /// <summary>
         ///     Transforms a screen space vector to a world space vector.
@@ -100,7 +110,7 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// <returns></returns>
         public Vector2 WorldToScreen(Vector2 position)
         {
-            return Vector2.Transform(position, Transform);
+            return Vector2.Transform(position, ProjectionMatrix);
         }
     }
 }
