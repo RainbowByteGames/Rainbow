@@ -5,7 +5,7 @@ namespace HappiiDreamer.Rainbow.Graphics
 {
     /// <summary>
     ///     A class which can project and unproject a virtual resolution onto
-    ///     the viewport.
+    ///     the viewport and where the origin is at the center.
     /// </summary>
     public class Camera2D
     {
@@ -31,6 +31,11 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// </summary>
         public float OrthographicSize { get; set; }
 
+        /// <summary>
+        ///     Gets or sets whether the center should be the origin.
+        ///     Default: true
+        /// </summary>
+        public bool CenterOrigin { get; set; } = true;
         /// <summary>
         ///     Gets or sets the camera's position in the world.
         /// </summary>
@@ -58,10 +63,15 @@ namespace HappiiDreamer.Rainbow.Graphics
         public void UpdateMatrix(Viewport viewport)
         {
             // Create initial viewport.
-            Matrix m = Matrix.Multiply(
-                Matrix.CreateScale(viewport.Height / VirtualHeight),
-                Matrix.CreateTranslation(viewport.Width / 2, viewport.Height / 2, 0)
-            );
+            Matrix m = Matrix.CreateScale(viewport.Height / VirtualHeight);
+
+            // Center the origin.
+            if (CenterOrigin)
+            {
+                m = Matrix.Multiply(
+                    m, Matrix.CreateTranslation(viewport.Width / 2, viewport.Height / 2, 0)
+                );
+            }
 
             // Apply zoom
             m = Matrix.Multiply(
