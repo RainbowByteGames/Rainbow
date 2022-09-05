@@ -14,6 +14,14 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// </summary>
         public Texture2D Texture { get; }
         /// <summary>
+        ///     Gets the texture's width.
+        /// </summary>
+        public int Width => Texture.Width;
+        /// <summary>
+        ///     Gets the texture's height.
+        /// </summary>
+        public int Height => Texture.Height;
+        /// <summary>
         ///     Gets or sets the source rectangle. (Default: Entire Texture)
         /// </summary>
         public Rectangle SourceRectangle { get; set; }
