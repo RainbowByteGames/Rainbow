@@ -13,9 +13,9 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public KineticBody2D? Body { get; internal set; }
         /// <summary>
-        ///     Gets or sets the position offset.
+        ///     Gets or sets the origin.
         /// </summary>
-        public Vector2 Offset { get; set; }
+        public Vector2 Origin { get; set; }
         /// <summary>
         ///     Gets the bounds of this collider.
         /// </summary>

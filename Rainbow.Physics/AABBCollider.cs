@@ -15,7 +15,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets or sets the position offset.
         /// </summary>
-        public Vector2 Offset { get; set; }
+        public Vector2 Origin { get; set; } = Vector2.Zero;
         /// <summary>
         ///     Gets or sets the width.
         /// </summary>
@@ -27,7 +27,13 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets or sets the bounds of the collider.
         /// </summary>
-        public RectangleF Bounds => new RectangleF((Body?.Position.X ?? 0) + Offset.X, (Body?.Position.Y ?? 0) + Offset.Y, Width, Height);
+        public RectangleF Bounds => new RectangleF
+        {
+            X = (Body?.Transform.Position.X ?? 0) - Origin.X * Width,
+            Y = (Body?.Transform.Position.Y ?? 0) - Origin.Y * Height,
+            Width = Width,
+            Height = Height
+        };
 
         public bool Intersects(ICollider2D other, bool throwback)
         {
