@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 
 namespace HappiiDreamer.Rainbow.State
 {
     /// <summary>
     ///     Manages multiple game states.
     /// </summary>
-    public class StateManager : IGameState
+    public class StateManager : IGameSystem
     {
         private List<Type> States { get; } = new List<Type>();
 
