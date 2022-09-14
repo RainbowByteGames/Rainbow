@@ -27,8 +27,6 @@ namespace HappiiDreamer.Rainbow
         {
             States = new StateManager(this);
             Graphics = new GraphicsDeviceManager(this);
-
-            this.Components.Add(IGameComponent)
         }
 
         protected override void LoadContent()
