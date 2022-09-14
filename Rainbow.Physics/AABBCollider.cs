@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HappiiDreamer.Rainbow.Math;
+using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {

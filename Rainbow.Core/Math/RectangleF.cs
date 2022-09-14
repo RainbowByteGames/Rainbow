@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow
+namespace HappiiDreamer.Rainbow.Math
 {
     /// <summary>
     ///     The floating-point equivalent of Microsoft.Xna.Framework.Rectangle
     /// </summary>
-    public struct RectangleF : IEquatable<RectangleF>
+    public struct RectangleF : IShape2D, IEquatable<RectangleF>
     {
         public float X, Y, Width, Height;
 
@@ -33,6 +33,8 @@ namespace HappiiDreamer.Rainbow
                 Height = value.Y;
             }
         }
+
+        public RectangleF Bounds => this;
 
         /// <summary>
         ///     Gets the center of the rectangle.
@@ -72,36 +74,35 @@ namespace HappiiDreamer.Rainbow
 
         public RectangleF(float x, float y, float width, float height)
         {
-            this.X = x;
-            this.Y = y;
-            this.Width = width;
-            this.Height = height;
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
         }
 
-        /// <summary>
-        ///     Checks whether this rectangle contains a point.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
         public bool Contains(float x, float y)
         {
             return
                 x >= Left && x <= Right &&
                 y >= Top && y <= Bottom;
         }
-        /// <summary>
-        ///     Checks whether this rectangle contains a point.
-        /// </summary>
-        /// <param name="pt"></param>
-        /// <returns></returns>
-        public bool Contains(Vector2 pt) => Contains(pt.X, pt.Y);
-        /// <summary>
-        ///     Checks whether this rectangle contains a point.
-        /// </summary>
-        /// <param name="pt"></param>
-        /// <returns></returns>
-        public bool Contains(Point pt) => Contains(pt.X, pt.Y);
+        public bool Intersects(IShape2D other, bool fallback)
+        {
+            if (other is RectangleF rect)
+            {
+                return
+                    Left <= rect.Right && Right >= rect.Left &&
+                    Top <= rect.Bottom && Bottom >= rect.Top;
+            }
+            else if (!fallback)
+            {
+                return other.Intersects(this, true);
+            }
+            else
+            {
+                throw new FellThroughIntersectionException(this, other);
+            }
+        }
 
         /// <summary>
         ///     Destructs a rectangle into its components.
@@ -129,16 +130,7 @@ namespace HappiiDreamer.Rainbow
             Width += horizontalAmount / 2;
             Height += verticalAmount / 2;
         }
-        /// <summary>
-        ///     Checks whether two rectangles intersect.
-        /// </summary>
-        /// <param name="other"></param>
-        public bool Intersects(RectangleF other)
-        {
-            return
-                Left <= other.Right && Right >= other.Left &&
-                Top <= other.Bottom && Bottom >= other.Top;
-        }
+
         /// <summary>
         ///     Offsets this rectangle.
         /// </summary>
@@ -160,7 +152,7 @@ namespace HappiiDreamer.Rainbow
         /// <param name="offset"></param>
         public void Offset(Point offset) => Offset(offset.X, offset.Y);
 
-        public static bool operator ==(RectangleF a, RectangleF b) 
+        public static bool operator ==(RectangleF a, RectangleF b)
         {
             return a.Equals(b);
         }
@@ -172,8 +164,10 @@ namespace HappiiDreamer.Rainbow
         {
             return new RectangleF
             {
-                X = rect.X, Y = rect.Y,
-                Width = rect.Width, Height = rect.Height
+                X = rect.X,
+                Y = rect.Y,
+                Width = rect.Width,
+                Height = rect.Height
             };
         }
 
@@ -187,9 +181,9 @@ namespace HappiiDreamer.Rainbow
             {
                 return Equals(rectf);
             }
-            else if (obj is Rectangle rect) 
+            else if (obj is Rectangle rect)
             {
-                return Equals((RectangleF) rect);
+                return Equals((RectangleF)rect);
             }
             return false;
         }
