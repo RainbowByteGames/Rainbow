@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
-    <Version>0.2.0-pre.2</Version>
+    <Version>0.2.0-pre.3</Version>
     <Authors>HappiiDreamer</Authors>
     <Description>A general purpose MonoGame library with state management, basic collisions, and more.</Description>
     <PackageIcon>icon.png</PackageIcon>
