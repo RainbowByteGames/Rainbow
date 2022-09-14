@@ -1,5 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HappiiDreamer.Rainbow.Graphics

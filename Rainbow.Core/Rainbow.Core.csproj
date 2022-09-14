@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
-    <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
+    <RootNamespace>HappiiDreamer.Rainbow</RootNamespace>
 	<Authors>HappiiDreamer</Authors>
-    <Version>0.2.0-pre.1</Version>
+    <Version>0.2.0-pre.3</Version>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RepositoryUrl>https://github.com/hazdryx/Rainbow</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>

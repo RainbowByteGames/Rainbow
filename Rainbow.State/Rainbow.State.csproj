@@ -7,7 +7,7 @@
     <AssemblyName>HappiiDreamer.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
 	<Authors>HappiiDreamer</Authors>
-    <Version>0.2.0-pre.1</Version>
+    <Version>0.2.0-pre.3</Version>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/hazdryx/Rainbow</RepositoryUrl>

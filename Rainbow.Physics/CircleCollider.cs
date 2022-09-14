@@ -1,5 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {
@@ -9,12 +8,19 @@ namespace HappiiDreamer.Rainbow.Physics
     public class CircleCollider : ICollider2D
     {
         public KineticBody2D? Body { get; set; }
-        public Vector2 Offset { get; set; }
+        /// <summary>
+        ///     Gets or sets the origin.
+        /// </summary>
+        public Vector2 Origin { get; set; } = new Vector2(0.5f, 0.5f);
 
         /// <summary>
-        ///     Gets or sets the center of the circle.
+        ///     Gets the center of the circle.
         /// </summary>
-        public Vector2 Center => (Body?.Position ?? Vector2.Zero) + Offset;
+        public Vector2 Center => new Vector2
+        {
+            X = (Body?.Transform.Position.X ?? 0) - (Origin.X - 0.5f) * Radius * 2,
+            Y = (Body?.Transform.Position.Y ?? 0) - (Origin.Y - 0.5f) * Radius * 2
+        };
         /// <summary>
         ///     Gets or sets the radius of the circle.
         /// </summary>
@@ -66,11 +72,6 @@ namespace HappiiDreamer.Rainbow.Physics
                 return other.Intersects(this, true);
             }
             throw ICollider2DExt.NotImplemented(other);
-        }
-
-        bool ICollider2D.Intersects(ICollider2D other, bool throwback)
-        {
-            throw new NotImplementedException();
         }
     }
 }
