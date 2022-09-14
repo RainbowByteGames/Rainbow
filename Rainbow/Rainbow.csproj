@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rainbow.Core\Rainbow.Core.csproj" />
     <ProjectReference Include="..\Rainbow.Graphics\Rainbow.Graphics.csproj" />
-    <ProjectReference Include="..\Rainbow.Math\Rainbow.Math.csproj" />
     <ProjectReference Include="..\Rainbow.Physics\Rainbow.Physics.csproj" />
     <ProjectReference Include="..\Rainbow.State\Rainbow.State.csproj" />
   </ItemGroup>

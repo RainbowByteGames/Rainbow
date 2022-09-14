@@ -26,10 +26,10 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
 
-    - name: Deploy Rainbow.Math to Nuget
+    - name: Deploy Rainbow.Core to Nuget
       uses: alirezanet/publish-nuget@v3.0.4
       with:
-        PROJECT_FILE_PATH: Rainbow.Math/Rainbow.Math.csproj
+        PROJECT_FILE_PATH: Rainbow.Core/Rainbow.Core.csproj
         TAG_COMMIT: false
         NUGET_KEY: ${{secrets.NUGET_KEY}}
 

@@ -1,5 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using HappiiDreamer.Rainbow.State;
+﻿using HappiiDreamer.Rainbow.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -28,6 +27,8 @@ namespace HappiiDreamer.Rainbow
         {
             States = new StateManager(this);
             Graphics = new GraphicsDeviceManager(this);
+
+            this.Components.Add(IGameComponent)
         }
 
         protected override void LoadContent()

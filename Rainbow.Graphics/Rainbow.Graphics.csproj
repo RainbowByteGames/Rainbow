@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Rainbow.Math\Rainbow.Math.csproj" />
+    <ProjectReference Include="..\Rainbow.Core\Rainbow.Core.csproj" />
   </ItemGroup>
 
 </Project>
