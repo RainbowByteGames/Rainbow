@@ -9,34 +9,20 @@ namespace HappiiDreamer.Rainbow.Graphics
     public static class SpriteBatchExt
     {
         /// <summary>
-        ///     Draws a texture to the sprite batch.
-        /// </summary>
-        /// <param name="batch"></param>
-        /// <param name="texture"></param>
-        /// <param name="transform"></param>
-        /// <param name="pixelsPerUnit"></param>
-        /// <param name="sourceRectangle"></param>
-        /// <param name="color"></param>
-        /// <param name="normalOrigin"></param>
-        /// <param name="effects"></param>
-        /// <param name="layer"></param>
-        public static void Draw(this SpriteBatch batch, Texture2D texture, Transform2D transform, int pixelsPerUnit, Rectangle sourceRectangle, Color color, Vector2 normalOrigin, SpriteEffects effects, int layer)
-        {
-            batch.Draw(texture, transform.Position, sourceRectangle, color, transform.Rotation, new Vector2
-            {
-                X = normalOrigin.X * sourceRectangle.Width,
-                Y = normalOrigin.Y * sourceRectangle.Height
-            }, transform.Scale / pixelsPerUnit, effects, layer);
-        }
-        /// <summary>
         ///     Draws a sprite to the sprite batch.
         /// </summary>
         /// <param name="batch"></param>
         /// <param name="sprite"></param>
-        /// <param name="transform"></param>
-        public static void Draw(this SpriteBatch batch, Sprite sprite, Transform2D transform)
+        /// <param name="position"></param>
+        /// <param name="scale"></param>
+        /// <param name="rotation"></param>
+        public static void Draw(this SpriteBatch batch, Sprite sprite, Vector2 position, float z, Vector2 scale, float rotation)
         {
-            batch.Draw(sprite.Texture, transform, sprite.PixelsPerUnit, sprite.SourceRectangle, sprite.Color, sprite.Origin, sprite.Effects, sprite.Layer);
+            batch.Draw(sprite.Texture, position, sprite.SourceRectangle, sprite.Color, rotation, new Vector2
+            {
+                X = sprite.Origin.X * sprite.SourceRectangle.Width,
+                Y = sprite.Origin.Y * sprite.SourceRectangle.Height
+            }, scale / sprite.PixelsPerUnit, sprite.Effects, z);
         }
     }
 }

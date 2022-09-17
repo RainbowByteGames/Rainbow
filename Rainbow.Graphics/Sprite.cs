@@ -1,5 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HappiiDreamer.Rainbow.Graphics
@@ -30,10 +29,6 @@ namespace HappiiDreamer.Rainbow.Graphics
         ///     Gets or sets the source rectangle. (Default: Entire Texture)
         /// </summary>
         public Rectangle SourceRectangle { get; set; }
-        /// <summary>
-        ///     Gets or sets the layer.
-        /// </summary>
-        public int Layer { get; set; } = 0;
         /// <summary>
         ///     Gets or sets a normalized origin. (Default: <0.5, 0.5>)
         /// </summary>
