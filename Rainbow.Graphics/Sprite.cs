@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HappiiDreamer.Rainbow.Math;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HappiiDreamer.Rainbow.Graphics
@@ -13,13 +14,18 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// </summary>
         public Texture2D Texture { get; }
         /// <summary>
-        ///     Gets the texture's width.
+        ///     Gets or sets the pixels per unit.
         /// </summary>
-        public int Width => Texture.Width;
+        public int PixelsPerUnit { get; set; } = 100;
+
         /// <summary>
-        ///     Gets the texture's height.
+        ///     Gets the sprite's width in units.
         /// </summary>
-        public int Height => Texture.Height;
+        public float Width => Texture.Width / (float) PixelsPerUnit;
+        /// <summary>
+        ///     Gets the sprite's height in units.
+        /// </summary>
+        public float Height => Texture.Height / (float) PixelsPerUnit;
         /// <summary>
         ///     Gets or sets the source rectangle. (Default: Entire Texture)
         /// </summary>
@@ -43,13 +49,8 @@ namespace HappiiDreamer.Rainbow.Graphics
 
         public Sprite(Texture2D texture)
         {
-            this.Texture = texture;
-            this.SourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
-        }
-        public void Draw(SpriteBatch batch, Transform2D transform)
-        {
-            if (Texture.IsDisposed) return;
-            batch.Draw(Texture, transform, SourceRectangle, Color, Origin, Effects, Layer);
+            Texture = texture;
+            SourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
         }
     }
 }
