@@ -1,35 +1,34 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HappiiDreamer.Rainbow.Shapes;
+using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {
-    public class KineticBody2D
+    public class KineticBody2D : ITransformable
     {
-        /// <summary>
-        ///     Gets or sets the transform for this body.
-        /// </summary>
-        public Transform2D Transform { get; set; } = new Transform2D
-        {
-            Scale = Vector2.One
-        };
-
+        public Transform2D Transform { get; }
         /// <summary>
         ///     Gets or sets the body's collider.
         /// </summary>
-        public ICollider2D? Collider { get; private set; }
+        public IShape2D? Collider { get; private set; }
         /// <summary>
         ///     Gets or sets the velocity.
         /// </summary>
         public Vector2 Velocity { get; set; }
 
-        public KineticBody2D() { }
-        public KineticBody2D(ICollider2D collider)
+        /// <summary>
+        ///     Gets or sets the validation function for this body.
+        /// </summary>
+        public Action? Validate { get; set; }
+
+        public KineticBody2D()
         {
-            SetCollider(collider);
+            Transform = new Transform2D(this);
         }
 
         public virtual void Update(GameTime gameTime)
         {
             Move(Velocity * (float) gameTime.ElapsedGameTime.TotalSeconds);
+            Validate?.Invoke();
         }
 
         /// <summary>
@@ -38,9 +37,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <param name="pos"></param>
         public void MoveTo(Vector2 pos)
         {
-            Transform2D t = Transform;
-            t.Position = pos;
-            Transform = t;
+            Transform.Position = SequencePosition;
         }
         /// <summary>
         ///     Moves the body to a specific position.
@@ -63,31 +60,5 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <param name="dx"></param>
         /// <param name="dy"></param>
         public void Move(float dx, float dy) => Move(new Vector2(dx, dy));
-
-
-        /// <summary>
-        ///     Sets this bodies collider.
-        /// </summary>
-        /// <param name="collider"></param>
-        /// <exception cref="InvalidOperationException"></exception>
-        public void SetCollider(ICollider2D? collider)
-        {
-            if (collider == null)
-            {
-                if (Collider != null) Collider.Body = null;
-                return;
-            }
-
-            if (collider.Body != null)
-            {
-                throw new InvalidOperationException("Collider already has a parent body.");
-            }
-            collider.Body = this;
-            Collider = collider;
-        }
-        /// <summary>
-        ///     Removes the collider from this body.
-        /// </summary>
-        public void RemoveCollider() => SetCollider(null);
     }
 }
