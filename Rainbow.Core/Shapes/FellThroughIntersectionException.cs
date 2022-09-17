@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow.Math
+﻿namespace HappiiDreamer.Rainbow.Shapes
 {
     public class FellThroughIntersectionException : Exception
     {

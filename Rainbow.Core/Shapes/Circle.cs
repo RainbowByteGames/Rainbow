@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HappiiDreamer.Rainbow.Shapes;
+using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Math
 {
-    public struct CircleF : IShape2D
+    public struct Circle : IShape2D
     {
         public Vector2 Location { get; set; }
         /// <summary>
@@ -20,7 +21,7 @@ namespace HappiiDreamer.Rainbow.Math
         }
         public bool Intersects(IShape2D other, bool fallback)
         {
-            if (other is CircleF circle)
+            if (other is Circle circle)
             {
                 float dx = Location.X - circle.Location.X;
                 float dy = Location.Y - circle.Location.Y;

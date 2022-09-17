@@ -5,7 +5,7 @@ namespace HappiiDreamer.Rainbow.Math
     /// <summary>
     ///     The floating-point equivalent of Microsoft.Xna.Framework.Rectangle
     /// </summary>
-    public struct RectangleF : IShape2D, IEquatable<RectangleF>
+    public struct RectangleF : IEquatable<RectangleF>
     {
         public float X, Y, Width, Height;
 
@@ -86,22 +86,11 @@ namespace HappiiDreamer.Rainbow.Math
                 x >= Left && x <= Right &&
                 y >= Top && y <= Bottom;
         }
-        public bool Intersects(IShape2D other, bool fallback)
+        public bool Intersects(RectangleF other)
         {
-            if (other is RectangleF rect)
-            {
-                return
-                    Left <= rect.Right && Right >= rect.Left &&
-                    Top <= rect.Bottom && Bottom >= rect.Top;
-            }
-            else if (!fallback)
-            {
-                return other.Intersects(this, true);
-            }
-            else
-            {
-                throw new FellThroughIntersectionException(this, other);
-            }
+            return
+                Left <= other.Right && Right >= other.Left &&
+                Top <= other.Bottom && Bottom >= other.Top;
         }
 
         /// <summary>
