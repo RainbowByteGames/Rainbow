@@ -23,13 +23,13 @@ namespace HappiiDreamer.Rainbow
             {
                 _parent?._children.Remove(this);
 
-                value?.Cascade(parent =>
+                value?.Cascade(trans =>
                 {
-                    if (parent == this)
+                    if (trans == this)
                     {
                         throw new InvalidOperationException("Circular parents are not supported.");
                     }
-                });
+                }, true);
 
                 _parent = value;
                 _parent?._children.Add(this);
@@ -49,7 +49,7 @@ namespace HappiiDreamer.Rainbow
         /// <summary>
         ///     Gets or sets the local position.
         /// </summary>
-        public Vector2 LocalPosition { get; set; }
+        public Vector2 LocalPosition { get; set; } = Vector2.Zero;
         /// <summary>
         ///     Gets or sets the position.
         /// </summary>
@@ -78,7 +78,7 @@ namespace HappiiDreamer.Rainbow
         /// <summary>
         ///     Gets or sets the local scale.
         /// </summary>
-        public Vector2 LocalScale { get; set; }
+        public Vector2 LocalScale { get; set; } = Vector2.One;
         /// <summary>
         ///     Gets or sets the scale.
         /// </summary>
@@ -107,7 +107,7 @@ namespace HappiiDreamer.Rainbow
         /// <summary>
         ///     Gets or sets the local rotation.
         /// </summary>
-        public float LocalRotation { get; set; }
+        public float LocalRotation { get; set; } = 0;
         /// <summary>
         ///     Gets or sets the rotation.
         /// </summary>
@@ -140,17 +140,22 @@ namespace HappiiDreamer.Rainbow
         }
 
         /// <summary>
+        ///     Runs the callback up the transform chain.
+        /// </summary>
+        /// <param name="callback"></param>
+        public void Cascade(Action<Transform2D> callback, bool includeSelf)
+        {
+            Transform2D? trans = includeSelf ? this : Parent;
+            while (trans != null)
+            {
+                callback(trans);
+                trans = trans.Parent;
+            }
+        }
+        /// <summary>
         ///     Runs the callback up the parent chain.
         /// </summary>
         /// <param name="callback"></param>
-        public void Cascade(Action<Transform2D> callback)
-        {
-            Transform2D? parent = Parent;
-            while (parent != null)
-            {
-                callback(parent);
-                parent = parent.Parent;
-            }
-        }
+        public void Cascade(Action<Transform2D> callback) => Cascade(callback, false);
     }
 }
