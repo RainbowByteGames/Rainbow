@@ -1,34 +1,55 @@
-﻿using HappiiDreamer.Rainbow.Shapes;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {
-    public class KineticBody2D : ITransformable
+    public class KineticBody2D : ICollidable
     {
-        public Transform2D Transform { get; }
+        /// <summary>
+        ///     Gets or sets the postiion.
+        /// </summary>
+        public Vector2 Position { get; set; }
         /// <summary>
         ///     Gets or sets the body's collider.
         /// </summary>
-        public IShape2D? Collider { get; private set; }
+        public ICollider2D? Collider { get; private set; }
         /// <summary>
         ///     Gets or sets the velocity.
         /// </summary>
         public Vector2 Velocity { get; set; }
-
         /// <summary>
         ///     Gets or sets the validation function for this body.
         /// </summary>
         public Action? Validate { get; set; }
 
-        public KineticBody2D()
-        {
-            Transform = new Transform2D(this);
-        }
-
         public virtual void Update(GameTime gameTime)
         {
             Move(Velocity * (float) gameTime.ElapsedGameTime.TotalSeconds);
             Validate?.Invoke();
+        }
+
+
+        /// <summary>
+        ///     Creates and sets a collider for this body.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T SetCollider<T>() where T : ICollider2D
+        {
+            T? collider = (T?) Activator.CreateInstance(typeof(T), this);
+            if (collider == null)
+            {
+                throw new NullReferenceException("Could not create collider.");
+            }
+
+            return collider;
+        }
+        /// <summary>
+        ///     Removes the collider from this body.
+        /// </summary>
+        public void RemoveCollider()
+        {
+            Collider = null;
+            // TODO: make collider unusable?
         }
 
         /// <summary>
@@ -37,7 +58,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <param name="pos"></param>
         public void MoveTo(Vector2 pos)
         {
-            Transform.Position = SequencePosition;
+            Position = pos;
         }
         /// <summary>
         ///     Moves the body to a specific position.
@@ -52,7 +73,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <param name="v"></param>
         public void Move(Vector2 delta)
         {
-            MoveTo(Transform.Position + delta);
+            Position += delta;
         }
         /// <summary>
         ///     Moves the body.

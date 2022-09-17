@@ -1,7 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using Microsoft.Xna.Framework;
-
-namespace HappiiDreamer.Rainbow.Physics
+﻿namespace HappiiDreamer.Rainbow.Physics
 {
     /// <summary>
     ///     An interface which describes a 2D collider.
@@ -11,11 +8,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets the parent of this collider.
         /// </summary>
-        public KineticBody2D? Body { get; internal set; }
-        /// <summary>
-        ///     Gets or sets the origin.
-        /// </summary>
-        public Vector2 Origin { get; set; }
+        public ICollidable Parent { get; }
         /// <summary>
         ///     Gets the bounds of this collider.
         /// </summary>

@@ -1,5 +1,4 @@
-﻿using HappiiDreamer.Rainbow.Math;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace HappiiDreamer.Rainbow.Physics
 {
@@ -11,7 +10,8 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets the body for this collider.
         /// </summary>
-        public KineticBody2D? Body { get; set; }
+        public ICollidable Parent { get; }
+
         /// <summary>
         ///     Gets or sets the position offset.
         /// </summary>
@@ -29,15 +29,19 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public RectangleF Bounds => new RectangleF
         {
-            X = (Body?.Transform.Position.X ?? 0) - Origin.X * Width,
-            Y = (Body?.Transform.Position.Y ?? 0) - Origin.Y * Height,
+            X = Parent.Position.X - Origin.X * Width,
+            Y = Parent.Position.Y - Origin.Y * Height,
             Width = Width,
             Height = Height
         };
 
+        public AABBCollider(ICollidable parent)
+        {
+            Parent = parent;
+        }
+
         public bool Intersects(ICollider2D other, bool throwback)
         {
-            if (Body == null || other.Body == null) throw ICollider2DExt.NullBody();
             if (other is AABBCollider)
             {
                 return Bounds.Intersects(other.Bounds);
@@ -46,7 +50,7 @@ namespace HappiiDreamer.Rainbow.Physics
             {
                 return other.Intersects(this, true);
             }
-            throw ICollider2DExt.NotImplemented(other);
+            throw new FellThroughCollisionException(this, other);
         }
     }
 }
