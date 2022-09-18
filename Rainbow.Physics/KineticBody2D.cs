@@ -2,16 +2,8 @@
 
 namespace HappiiDreamer.Rainbow.Physics
 {
-    public class KineticBody2D : ICollidable
+    public class KineticBody2D : Collidable
     {
-        /// <summary>
-        ///     Gets or sets the postiion.
-        /// </summary>
-        public Vector2 Position { get; set; }
-        /// <summary>
-        ///     Gets or sets the body's collider.
-        /// </summary>
-        public ICollider2D? Collider { get; private set; }
         /// <summary>
         ///     Gets or sets the velocity.
         /// </summary>
@@ -21,37 +13,13 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public Action? Validate { get; set; }
 
-        public virtual void Update(GameTime gameTime)
+        public KineticBody2D(Game game) : base(game) { }
+
+        public override void Update(GameTime gameTime)
         {
             Move(Velocity * (float) gameTime.ElapsedGameTime.TotalSeconds);
             Validate?.Invoke();
         }
-
-
-        /// <summary>
-        ///     Creates and sets a collider for this body.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public T SetCollider<T>() where T : ICollider2D
-        {
-            T? collider = (T?) Activator.CreateInstance(typeof(T), this);
-            if (collider == null)
-            {
-                throw new NullReferenceException("Could not create collider.");
-            }
-
-            return collider;
-        }
-        /// <summary>
-        ///     Removes the collider from this body.
-        /// </summary>
-        public void RemoveCollider()
-        {
-            Collider = null;
-            // TODO: make collider unusable?
-        }
-
         /// <summary>
         ///     Moves the body to a specific position.
         /// </summary>

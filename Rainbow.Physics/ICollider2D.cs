@@ -8,7 +8,7 @@
         /// <summary>
         ///     Gets the parent of this collider.
         /// </summary>
-        public ICollidable Parent { get; }
+        public Collidable Parent { get; }
         /// <summary>
         ///     Gets the bounds of this collider.
         /// </summary>
