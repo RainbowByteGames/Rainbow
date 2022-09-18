@@ -5,14 +5,12 @@ namespace HappiiDreamer.Rainbow.State
     /// <summary>
     ///     Manages multiple game states.
     /// </summary>
-    public class StateManager : IGameSystem
+    public class StateManager : GameSystem
     {
         private List<Type> States { get; } = new List<Type>();
+        public override bool IsUpdatable => true;
+        public override bool IsDrawable => true;
 
-        /// <summary>
-        ///     Gets the game which owns this state manager.
-        /// </summary>
-        public Game Game { get; }
         /// <summary>
         ///     Gets the current game state.
         /// </summary>
@@ -23,10 +21,7 @@ namespace HappiiDreamer.Rainbow.State
         /// </summary>
         public bool IsContentLoaded { get; private set; }
 
-        public StateManager(Game game)
-        {
-            this.Game = game;
-        }
+        public StateManager(Game game) : base(game) { }
 
         /// <summary>
         ///     Adds a new state. If content has already
@@ -95,21 +90,16 @@ namespace HappiiDreamer.Rainbow.State
         /// <summary>
         ///     Calls Update on the current state.
         /// </summary>
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             CurrentState?.Update(gameTime);
         }
-        /// <summary>
-        ///     Calls FixedUpdate on the current state.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        public virtual void FixedUpdate(GameTime gameTime) { }
 
         /// <summary>
         ///     Calls BeginDraw on the current state.
         /// </summary>
         /// <returns></returns>
-        public bool BeginDraw()
+        public override bool BeginDraw()
         {
             return CurrentState?.BeginDraw() ?? false;
         }
@@ -117,14 +107,14 @@ namespace HappiiDreamer.Rainbow.State
         ///     Calls Draw on the current state.
         /// </summary>
         /// <param name="gameTime"></param>
-        public void Draw(GameTime gameTime)
+        public override void Draw(GameTime gameTime)
         {
             CurrentState?.Draw(gameTime);
         }
         /// <summary>
         ///     Calls EndDraw on the current state.
         /// </summary>
-        public void EndDraw()
+        public override void EndDraw()
         {
             CurrentState?.EndDraw();
         }
@@ -135,7 +125,7 @@ namespace HappiiDreamer.Rainbow.State
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void OnActivated(object? sender, EventArgs e)
+        public override void OnActivated(object? sender, EventArgs e)
         {
             CurrentState?.OnActivated(sender, e);
         }
@@ -144,7 +134,7 @@ namespace HappiiDreamer.Rainbow.State
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void OnDeactivated(object? sender, EventArgs e)
+        public override void OnDeactivated(object? sender, EventArgs e)
         {
             CurrentState?.OnDeactivated(sender, e);
         }
@@ -153,7 +143,7 @@ namespace HappiiDreamer.Rainbow.State
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void OnExiting(object? sender, EventArgs e)
+        public override void OnExiting(object? sender, EventArgs e)
         {
             CurrentState?.OnExiting(sender, e);
         }

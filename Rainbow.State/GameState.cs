@@ -14,6 +14,9 @@ namespace HappiiDreamer.Rainbow.State
         ///     Gets the game this state belongs to.
         /// </summary>
         public Game Game => States.Game;
+        public bool IsUpdatable => true;
+        public bool IsDrawable => true;
+
         /// <summary>
         ///     Gets whether the game is active.
         /// </summary>
@@ -43,8 +46,8 @@ namespace HappiiDreamer.Rainbow.State
 
         public GameState(StateManager states, int id)
         {
-            this.States = states;
-            this.ID = id;
+            States = states;
+            ID = id;
         }
 
         /// <summary>
