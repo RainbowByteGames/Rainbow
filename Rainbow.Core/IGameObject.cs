@@ -13,6 +13,7 @@ namespace HappiiDreamer.Rainbow
     public interface IGameObject
     {
         public Game Game { get; }
+        public IGameObject? Parent { get; }
 
         public bool IsUpdatable { get; }
         public void Update(GameTime gameTime);

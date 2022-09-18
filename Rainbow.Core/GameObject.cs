@@ -5,6 +5,7 @@ namespace HappiiDreamer.Rainbow
     public abstract class GameObject : IGameObject
     {
         public Game Game { get; }
+        public IGameObject? Parent { get; set; }
         public abstract bool IsUpdatable { get; }
         public abstract bool IsDrawable { get; }
 

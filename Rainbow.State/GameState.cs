@@ -14,6 +14,7 @@ namespace HappiiDreamer.Rainbow.State
         ///     Gets the game this state belongs to.
         /// </summary>
         public Game Game => States.Game;
+        public IGameObject? Parent => null;
         public bool IsUpdatable => true;
         public bool IsDrawable => true;
 
