@@ -2,7 +2,7 @@
 
 namespace HappiiDreamer.Rainbow.Physics
 {
-    public abstract class Collidable : GameObject, IPositionable
+    public abstract class Collidable : GameObject
     {
         /// <summary>
         ///     Gets or sets the postiion.
