@@ -10,7 +10,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets the parent for this collider.
         /// </summary>
-        public ICollidable Parent { get; }
+        public Collidable Parent { get; }
         /// <summary>
         ///     Gets or sets the radius of the circle.
         /// </summary>
@@ -20,7 +20,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public RectangleF Bounds => new RectangleF(Parent.Position.X - Radius, Parent.Position.Y - Radius, Radius * 2, Radius * 2);
 
-        public CircleCollider(ICollidable parent)
+        public CircleCollider(Collidable parent)
         {
             Parent = parent;
         }

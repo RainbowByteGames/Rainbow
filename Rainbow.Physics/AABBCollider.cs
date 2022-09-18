@@ -10,7 +10,7 @@ namespace HappiiDreamer.Rainbow.Physics
         /// <summary>
         ///     Gets the body for this collider.
         /// </summary>
-        public ICollidable Parent { get; }
+        public Collidable Parent { get; }
 
         /// <summary>
         ///     Gets or sets the position offset.
@@ -35,7 +35,7 @@ namespace HappiiDreamer.Rainbow.Physics
             Height = Height
         };
 
-        public AABBCollider(ICollidable parent)
+        public AABBCollider(Collidable parent)
         {
             Parent = parent;
         }
