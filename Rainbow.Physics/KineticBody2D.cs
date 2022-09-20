@@ -13,7 +13,6 @@ namespace HappiiDreamer.Rainbow.Physics
         /// </summary>
         public Action? Validate { get; set; }
 
-        public KineticBody2D(Game game) : base(game) { }
 
         public override void Update(GameTime gameTime)
         {

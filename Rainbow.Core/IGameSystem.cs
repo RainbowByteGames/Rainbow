@@ -7,6 +7,7 @@ namespace HappiiDreamer.Rainbow
     /// </summary>
     public interface IGameSystem : IGameObject
     {
+        public Game Game { get; }
         public bool BeginDraw();
         public void EndDraw();
 

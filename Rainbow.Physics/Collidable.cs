@@ -19,8 +19,6 @@ namespace HappiiDreamer.Rainbow.Physics
         public override bool IsUpdatable => true;
         public override bool IsDrawable => false;
 
-        public Collidable(Game game) : base(game) { }
-
         /// <summary>
         ///     Creates and sets a collider for this body.
         /// </summary>
