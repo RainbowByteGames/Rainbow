@@ -7,5 +7,11 @@
     {
         public void LoadContent() { }
         public void UnloadContent() { }
+
+        public bool BeginDraw();
+        public void EndDraw();
+
+        public void Enter(IGameState? from);
+        public void Leave(IGameState? to);
     }
 }

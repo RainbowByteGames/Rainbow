@@ -13,7 +13,7 @@ namespace HappiiDreamer.Rainbow.State
         /// <summary>
         ///     Gets the game this state belongs to.
         /// </summary>
-        public Game Game => States.Game;
+        public Game Game { get; }
         public IGameObject? Parent => null;
         public bool IsUpdatable => true;
         public bool IsDrawable => true;
@@ -47,6 +47,7 @@ namespace HappiiDreamer.Rainbow.State
 
         public GameState(StateManager states, int id)
         {
+            Game = states.Game;
             States = states;
             ID = id;
         }
@@ -75,25 +76,22 @@ namespace HappiiDreamer.Rainbow.State
         ///     enters the state. The instance will be a
         ///     fresh instance.
         /// </summary>
-        public abstract void Enter(GameState? from);
+        public abstract void Enter(IGameState? from);
         /// <summary>
         ///     This is called when the state manager
         ///     leaves the state. The instance is destoried
         ///     afterwords.
         /// </summary>
-        public virtual void Leave(GameState? to) { }
+        public virtual void Leave(IGameState? to) { }
 
         /// <summary>
         ///     Updates the game state.
         /// </summary>
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime) { }
-        /// <summary>
-        ///     Updates the game on a fixed time step, set by the RainbowGame.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        public virtual void FixedUpdate(GameTime gameTime) { }
 
+        public virtual bool PreDraw() { return true; }
+        public virtual void PostDraw() { }
         /// <summary>
         ///     Draws the game state.
         /// </summary>

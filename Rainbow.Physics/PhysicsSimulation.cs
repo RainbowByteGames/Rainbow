@@ -9,8 +9,6 @@ namespace HappiiDreamer.Rainbow.Physics
         public override bool IsUpdatable => true;
         public override bool IsDrawable => false;
 
-        public PhysicsSimulation(Game game) : base(game) { }
-
 
         public override void Update(GameTime gameTime)
         {
