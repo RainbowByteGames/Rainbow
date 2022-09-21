@@ -8,10 +8,6 @@ namespace HappiiDreamer.Rainbow.Entity
         public override bool IsUpdatable => true;
         public override bool IsDrawable => true;
 
-        public EntitySystem(Game game) : base(game)
-        {
-        }
-
         public override void Update(GameTime gameTime)
         {
             foreach (T entity in this)
@@ -19,6 +15,7 @@ namespace HappiiDreamer.Rainbow.Entity
                 entity.Update(gameTime);
             }
         }
+
         public override void Draw(GameTime gameTime)
         {
             foreach (T entity in this)
