@@ -12,11 +12,11 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// <summary>
         ///     Gets the transformation matrix.
         /// </summary>
-        public Matrix ProjectionMatrix { get; private set; }
+        public Matrix TransformMatrix { get; private set; }
         /// <summary>
         ///     Gets the inverted transformation matrix.
         /// </summary>
-        public Matrix UnprojectionMatrix { get; private set; }
+        public Matrix InvertedMatrix { get; private set; }
 
         /// <summary>
         ///     Gets or sets the virtual height (double the orthographic size).
@@ -83,8 +83,8 @@ namespace HappiiDreamer.Rainbow.Graphics
                 Matrix.CreateTranslation(-Position.X, -Position.Y, 0), m
             );
 
-            ProjectionMatrix = m;
-            UnprojectionMatrix = Matrix.Invert(m);
+            TransformMatrix = m;
+            InvertedMatrix = Matrix.Invert(m);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// <returns></returns>
         public Vector2 ScreenToWorld(Vector2 position)
         {
-            return Vector2.Transform(position, UnprojectionMatrix);
+            return Vector2.Transform(position, InvertedMatrix);
         }
         /// <summary>
         ///     Transforms a screen space vector to a world space vector.
@@ -110,7 +110,7 @@ namespace HappiiDreamer.Rainbow.Graphics
         /// <returns></returns>
         public Vector2 WorldToScreen(Vector2 position)
         {
-            return Vector2.Transform(position, ProjectionMatrix);
+            return Vector2.Transform(position, TransformMatrix);
         }
     }
 }
