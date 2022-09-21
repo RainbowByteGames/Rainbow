@@ -6,6 +6,8 @@ namespace HappiiDreamer.Rainbow
 {
     public abstract class RainbowGame : Game
     {
+        private SpriteBatch? _spriteBatch;
+
         /// <summary>
         ///     Gets the state manager.
         /// </summary>
@@ -17,21 +19,21 @@ namespace HappiiDreamer.Rainbow
         /// <summary>
         ///     Gets the global sprite batch.
         /// </summary>
-        public SpriteBatch? SpriteBatch { get; private set; }
-        /// <summary>
-        ///     Gets the fixed step timer.
-        /// </summary>
-        public FixedStepTimer FixedStepTimer { get; } = new FixedStepTimer();
+        public SpriteBatch SpriteBatch
+        {
+            get => SpriteBatch ?? throw new NullReferenceException();
+        }
 
         public RainbowGame()
         {
+            Rainbow._instance = this;
             States = new StateManager(this);
             Graphics = new GraphicsDeviceManager(this);
         }
 
         protected override void LoadContent()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Loads the states' content.
             States.LoadContent();
@@ -49,15 +51,6 @@ namespace HappiiDreamer.Rainbow
         {
             // Call update.
             States.CurrentState?.Update(gameTime);
-
-            // Call fixed update
-            FixedStepTimer.Ellapse(gameTime.ElapsedGameTime);
-            GameTime fixedGameTime = new GameTime(gameTime.TotalGameTime, FixedStepTimer.TimeStep);
-            while (FixedStepTimer.TryStep(out _))
-            {
-                States.CurrentState?.FixedUpdate(fixedGameTime);
-            }
-
             base.Update(gameTime);
         }
 
