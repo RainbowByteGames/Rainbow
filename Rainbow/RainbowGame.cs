@@ -21,7 +21,7 @@ namespace HappiiDreamer.Rainbow
         /// </summary>
         public SpriteBatch SpriteBatch
         {
-            get => SpriteBatch ?? throw new NullReferenceException();
+            get => _spriteBatch ?? throw new NullReferenceException();
         }
 
         public RainbowGame()
