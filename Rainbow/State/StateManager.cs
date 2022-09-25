@@ -7,23 +7,11 @@ namespace RainbowByte.Rainbow.State
     /// </summary>
     public class StateManager
     {
-        public Game Game { get; }
         private List<Type> States { get; } = new List<Type>();
-
         /// <summary>
         ///     Gets the current game state.
         /// </summary>
-        public GameState? CurrentState { get; private set; }
-        /// <summary>
-        ///     Gets whether the states have already loaded their
-        ///     content.
-        /// </summary>
-        public bool IsContentLoaded { get; private set; }
-
-        public StateManager(Game game)
-        {
-            this.Game = game;
-        }
+        public RainbowState? CurrentState { get; private set; }
 
         /// <summary>
         ///     Adds a new state. If content has already
@@ -31,7 +19,7 @@ namespace RainbowByte.Rainbow.State
         /// </summary>
         /// <typeparam name="T">The type of state.</typeparam>
         /// <returns>The id of the added state.</returns>
-        public int AddState<T>() where T : GameState
+        public int AddState<T>() where T : RainbowState
         {
             States.Add(typeof(T));
             return States.Count - 1;
@@ -44,49 +32,21 @@ namespace RainbowByte.Rainbow.State
         /// <exception cref="RainbowStateException"></exception>
         public void Goto(int id)
         {
-            GameState? from = CurrentState;
-            GameState to = CreateState(id);
+            RainbowState? from = CurrentState;
+            RainbowState to = CreateState(id);
 
             from?.Leave(to);
             CurrentState = to;
             to.Enter(from);
         }
-        private GameState CreateState(int id)
+        private RainbowState CreateState(int id)
         {
-            GameState? state = (GameState?) Activator.CreateInstance(States[id], this, id);
+            RainbowState? state = (RainbowState?) Activator.CreateInstance(States[id], this, id);
             if (state == null)
             {
                 throw new RainbowStateException($"Failed to create state: {id}", null);
             }
             return state;
-        }
-
-        /// <summary>
-        ///     Loads content for all states.
-        /// </summary>
-        /// <param name="content"></param>
-        /// <exception cref="RainbowStateException"></exception>
-        public void LoadContent()
-        {
-            for (int i = 0; i < States.Count; i++)
-            {
-                CreateState(i).LoadContent();
-            }
-            IsContentLoaded = true;
-        }
-        /// <summary>
-        ///     Unloads content on all states. Does not call
-        ///     content.Unload().
-        /// </summary>
-        /// <param name="content"></param>
-        /// <exception cref="RainbowStateException"></exception>
-        public void UnloadContent()
-        {
-            for (int i = 0; i < States.Count; i++)
-            {
-                CreateState(i).UnloadContent();
-            }
-            IsContentLoaded = false;
         }
 
         /// <summary>

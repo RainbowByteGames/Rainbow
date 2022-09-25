@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+using RainbowByte.Rainbow.Graphics;
 
 namespace RainbowByte.Rainbow.State
 {
@@ -8,32 +7,16 @@ namespace RainbowByte.Rainbow.State
     ///     A class which represents a game state and attempts to mirror
     ///     the main Game class.
     /// </summary>
-    public abstract class GameState : IGameSystem
+    public abstract class RainbowState
     {
         /// <summary>
-        ///     Gets the game this state belongs to.
+        ///     Gets the virtual camera.
         /// </summary>
-        public Game Game { get; }
-        public IGameObject? Parent => null;
-        public bool IsUpdatable => true;
-        public bool IsDrawable => true;
-
+        public Camera2D Camera { get; } = new Camera2D();
         /// <summary>
-        ///     Gets whether the game is active.
+        ///     Gets a list of systems.
         /// </summary>
-        public bool IsActive => Game.IsActive;
-        /// <summary>
-        ///     Gets the game's content manager.
-        /// </summary>
-        public ContentManager Content => Game.Content;
-        /// <summary>
-        ///     Gets the game's graphics device.
-        /// </summary>
-        public GraphicsDevice GraphicsDevice => Game.GraphicsDevice;
-        /// <summary>
-        ///     Gets the game's window.
-        /// </summary>
-        public GameWindow Window => Game.Window;
+        public List<IGameSystem> Systems { get; } = new List<IGameSystem>();
 
         /// <summary>
         ///     Gets or sets the state manager for this state.
@@ -45,50 +28,39 @@ namespace RainbowByte.Rainbow.State
         /// </summary>
         public int ID { get; }
 
-        public GameState(StateManager states, int id)
+        public int UpdatePriority => throw new NotImplementedException();
+
+        public RainbowState(StateManager states, int id)
         {
-            Game = states.Game;
             States = states;
             ID = id;
         }
-
-        /// <summary>
-        ///     Exits the game.
-        /// </summary>
-        public void Exit() => Game.Exit();
-
-        /// <summary>
-        ///     Loads the content that is needed for the
-        ///     state. This is only called once.
-        /// </summary>
-        /// <param name="content"></param>
-        public virtual void LoadContent() { }
-        /// <summary>
-        ///     Unloads the content which was loaded
-        ///     previously. Content.Unload should not be
-        ///     called here.
-        /// </summary>
-        /// <param name="content"></param>
-        public virtual void UnloadContent() { }
 
         /// <summary>
         ///     This is called when the state manager
         ///     enters the state. The instance will be a
         ///     fresh instance.
         /// </summary>
-        public abstract void Enter(GameState? from);
+        public abstract void Enter(RainbowState? from);
         /// <summary>
         ///     This is called when the state manager
         ///     leaves the state. The instance is destoried
         ///     afterwords.
         /// </summary>
-        public virtual void Leave(GameState? to) { }
+        public virtual void Leave(RainbowState? to) { }
 
         /// <summary>
         ///     Updates the game state.
         /// </summary>
         /// <param name="gameTime"></param>
-        public virtual void Update(GameTime gameTime) { }
+        public virtual void Update(GameTime gameTime)
+        {
+            // Loop through each system and update it.
+            foreach (IGameSystem system in Systems)
+            {
+                if (system.IsUpdatable) system.Update(gameTime);
+            }
+        }
 
         public virtual bool PreDraw() { return true; }
         public virtual void PostDraw() { }
@@ -97,7 +69,18 @@ namespace RainbowByte.Rainbow.State
         /// </summary>
         /// <param name="batch">Global sprite batch.</param>
         /// <param name="gameTime"></param>
-        public virtual void Draw(GameTime gameTime) { }
+        public virtual void Draw(GameTime gameTime)
+        {
+            // Loop through each system and draw it.
+            foreach (IGameSystem system in Systems)
+            {
+                if (system.IsDrawable && system.PreDraw())
+                {
+                    system.Draw(gameTime);
+                    system.PostDraw();
+                }
+            }
+        }
         /// <summary>
         ///     Called right before Microsoft.Xna.Framework.Game.Draw(Microsoft.Xna.Framework.GameTime)
         ///     is normally called. Can return false to let the game loop not call 
