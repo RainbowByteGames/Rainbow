@@ -15,7 +15,6 @@ namespace RainbowByte.Rainbow.Entity
                 entity.Update(gameTime);
             }
         }
-
         public override void Draw(GameTime gameTime)
         {
             foreach (T entity in this)
@@ -24,8 +23,8 @@ namespace RainbowByte.Rainbow.Entity
             }
         }
 
-        public abstract IEnumerable<T> GetEntities();
 
+        public abstract IEnumerable<T> GetEntities();
 
         public IEnumerator<T> GetEnumerator()
         {
