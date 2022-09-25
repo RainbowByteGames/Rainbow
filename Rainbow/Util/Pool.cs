@@ -4,16 +4,28 @@
     ///     An abstract pooling structure with active and inactive pools.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Pool<T>
+    public class Pool<T> : IPool<T>
     {
-        private List<T> active = new List<T>();
-        private Queue<T> inactive = new Queue<T>();
+        private readonly List<T> active = new List<T>();
+        private readonly Queue<T> inactive = new Queue<T>();
 
-        public Pool(int size)
+        /// <summary>
+        ///     Gets or sets the create function.
+        /// </summary>
+        public Func<T> Create { get; set; }
+        /// <summary>
+        ///     Gets or sets the reset function.
+        /// </summary>
+        public Action<T>? Reset { get; set; }
+
+        public Pool(Func<T> create, int size) : this(create)
         {
             Alloc(size);
         }
-        public Pool() { }
+        public Pool(Func<T> create)
+        {
+            Create = create;
+        }
 
         /// <summary>
         ///     Allocates new instances to the inactive pool.
@@ -29,20 +41,24 @@
         /// <summary>
         ///     Activates an instance or creates a new one.
         /// </summary>
-        public void Spawn()
+        public T Spawn()
         {
+            T obj;
             if (inactive.Count == 0)
             {
-                active.Add(Create());
+                obj = Create();
             }
             else
             {
-                T obj = inactive.Dequeue();
-                Reset(obj);
-
-                active.Add(obj);
+                obj = inactive.Dequeue();
+                Reset?.Invoke(obj);
             }
+
+            active.Add(obj);
+            return obj;
         }
+        object IPool.Spawn() => Spawn()!;
+
         /// <summary>
         ///     Gets all active instances.
         /// </summary>
@@ -51,6 +67,7 @@
         {
             return active.ToArray();
         }
+        object[] IPool.GetActive() => (GetActive() as object[])!;
 
         /// <summary>
         ///     Deactivates an instance.
@@ -76,15 +93,7 @@
             active.Remove(obj);
         }
 
-        /// <summary>
-        ///     Creates a new instance of T.
-        /// </summary>
-        /// <returns></returns>
-        public abstract T Create();
-        /// <summary>
-        ///     Resets an instance of T.
-        /// </summary>
-        /// <param name="obj"></param>
-        public abstract void Reset(T obj);
+        public void Destroy(object obj) => Destroy((T) obj);
+        public void Obliterate(object obj) => Obliterate((T) obj);
     }
 }
