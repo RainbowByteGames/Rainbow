@@ -63,5 +63,20 @@ namespace RainbowByte.Engine.Entity
 
             base.Draw(gameTime);
         }
+
+        /// <summary>
+        ///     Destroies this entity as long as the parent is an EntitySystem
+        /// </summary>
+        public void Destroy()
+        {
+            (Parent as IEntitySystem)?.Destroy(this);
+        }
+        /// <summary>
+        ///     Obliterates this entity as long as the parent is an EntitySystem
+        /// </summary>
+        public void Obliterate()
+        {
+            (Parent as IEntitySystem)?.Obliterate(this);
+        }
     }
 }
