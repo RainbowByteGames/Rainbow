@@ -27,7 +27,7 @@ namespace RainbowByte.Rainbow
         public RainbowGame()
         {
             Rainbow._instance = this;
-            States = new StateManager(this);
+            States = new StateManager();
             Graphics = new GraphicsDeviceManager(this);
         }
 
@@ -35,14 +35,11 @@ namespace RainbowByte.Rainbow
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // Loads the states' content.
-            States.LoadContent();
+            // Goto first state.
             States.Goto(0);
         }
         protected override void UnloadContent()
         {
-            // Unload the states' content.
-            States.UnloadContent();
             // Unload content
             Content.Unload();
         }

@@ -10,8 +10,6 @@ namespace RainbowByte.Rainbow
     /// </summary>
     public static class Rainbow
     {
-        // THIS IS A TEST COMMIT!
-
         internal static RainbowGame? _instance;
         /// <summary>
         ///     Gets the latest RainbowGame instance.
@@ -46,5 +44,10 @@ namespace RainbowByte.Rainbow
         ///     Gets the current SpriteBatch.
         /// </summary>
         public static SpriteBatch SpriteBatch => Instance.SpriteBatch;
+
+        /// <summary>
+        ///     Exits the game.
+        /// </summary>
+        public static void Exit() => Instance.Exit();
     }
 }
