@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using RainbowByte.Engine.Graphics;
 
 namespace RainbowByte.Engine
 {
@@ -18,7 +19,6 @@ namespace RainbowByte.Engine
         {
             get => _instance ?? throw new NullReferenceException("No RainbowGame instance has been set.");
         }
-
         /// <summary>
         ///     Gets the instance as a specific type.
         /// </summary>
@@ -43,16 +43,47 @@ namespace RainbowByte.Engine
         /// </summary>
         public static GraphicsDevice GraphicsDevice => Instance.GraphicsDevice;
         /// <summary>
+        ///     Gets the game's grpahics manager.
+        /// </summary>
+        public static GraphicsDeviceManager Graphics => Instance.Graphics;
+        /// <summary>
         ///     Gets the game's window.
         /// </summary>
         public static GameWindow Window => Instance.Window;
 
         /// <summary>
-        ///     Gets the current StateManager.
+        ///     Gets the game's StateManager.
         /// </summary>
         public static StateManager States => Instance.States;
         /// <summary>
-        ///     Gets the current SpriteBatch.
+        ///     Gets the current state.
+        /// </summary>
+        public static RainbowState? State => Instance.States.CurrentState;
+        /// <summary>
+        ///     Gets the current state as a specific type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="InvalidCastException"></exception>
+        public static T? StateAs<T>() where T : RainbowState
+        {
+            RainbowState? state = State;
+            if (state == null)
+            {
+                return null;
+            }
+            else
+            {
+                return state as T ?? throw new InvalidCastException();
+            }
+        }
+
+        /// <summary>
+        ///     Gets the current camera.
+        /// </summary>
+        public static Camera2D? Camera => State?.Camera;
+        /// <summary>
+        ///     Gets the game's SpriteBatch.
         /// </summary>
         public static SpriteBatch SpriteBatch => Instance.SpriteBatch;
 
