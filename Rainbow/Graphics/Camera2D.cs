@@ -19,6 +19,10 @@ namespace RainbowByte.Engine.Graphics
         public Matrix InvertedMatrix { get; private set; }
 
         /// <summary>
+        ///     Gets the virtrual width. This is set after every update.
+        /// </summary>
+        public float VirtualWidth { get; private set; } = 0;
+        /// <summary>
         ///     Gets or sets the virtual height (double the orthographic size).
         /// </summary>
         public float VirtualHeight
@@ -57,11 +61,14 @@ namespace RainbowByte.Engine.Graphics
         }
 
         /// <summary>
-        ///     Updates the projection matrix based on the given viewport.
+        ///     Updates the transform matrix based on the given viewport.
         /// </summary>
         /// <param name="viewport"></param>
         public void UpdateMatrix(Viewport viewport)
         {
+            // Set virtual width.
+            VirtualWidth = (float) viewport.Width / viewport.Height * VirtualHeight;
+
             // Create initial viewport.
             Matrix m = Matrix.CreateScale(viewport.Height / VirtualHeight);
 
@@ -86,6 +93,10 @@ namespace RainbowByte.Engine.Graphics
             TransformMatrix = m;
             InvertedMatrix = Matrix.Invert(m);
         }
+        /// <summary>
+        ///     Updates the transform matrix based on the current viewport.
+        /// </summary>
+        public void UpdateMatrix() => UpdateMatrix(Rainbow.GraphicsDevice.Viewport);
 
         /// <summary>
         ///     Transforms a screen space vector to a world space vector.
