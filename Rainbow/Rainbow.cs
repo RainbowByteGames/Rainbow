@@ -20,6 +20,17 @@ namespace RainbowByte.Engine
         }
 
         /// <summary>
+        ///     Gets the instance as a specific type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        /// <exception cref="InvalidCastException"></exception>
+        public static T InstanceAs<T>() where T : RainbowGame
+        {
+            return Instance as T ?? throw new InvalidCastException($"Instance is not of type {typeof(T).FullName}");
+        }
+
+        /// <summary>
         ///     Gets whether the game is active.
         /// </summary>
         public static bool IsActive => Instance.IsActive;
