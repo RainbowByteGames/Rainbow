@@ -4,7 +4,7 @@
     ///     An abstract pooling structure with active and inactive pools.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Pool<T> : IPool<T>
+    public class Pool<T> : IPool<T> where T : class
     {
         private readonly List<T> active = new List<T>();
         private readonly Queue<T> inactive = new Queue<T>();
@@ -73,8 +73,9 @@
         ///     Deactivates an instance.
         /// </summary>
         /// <param name="obj"></param>
-        public void Destroy(T obj)
+        public void Destroy(T? obj)
         {
+            if (obj == null) return;
             if (active.Remove(obj))
             {
                 inactive.Enqueue(obj);
@@ -88,12 +89,13 @@
         ///     Deactivates an object and removes it from the pool.
         /// </summary>
         /// <param name="obj"></param>
-        public void Obliterate(T obj)
+        public void Obliterate(T? obj)
         {
+            if (obj == null) return;
             active.Remove(obj);
         }
 
-        public void Destroy(object obj) => Destroy((T) obj);
-        public void Obliterate(object obj) => Obliterate((T) obj);
+        public void Destroy(object? obj) => Destroy(obj as T);
+        public void Obliterate(object? obj) => Obliterate(obj is T);
     }
 }

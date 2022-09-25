@@ -25,12 +25,12 @@
         ///     Deactivates an active object.
         /// </summary>
         /// <param name="obj"></param>
-        public void Destroy(object obj);
+        public void Destroy(object? obj);
         /// <summary>
         ///     Removes the object from the pool.
         /// </summary>
         /// <param name="obj"></param>
-        public void Obliterate(object obj);
+        public void Obliterate(object? obj);
     }
     /// <summary>
     ///     A pool interface with generics.
@@ -52,11 +52,11 @@
         ///     Deactivates an active object.
         /// </summary>
         /// <param name="obj"></param>
-        public void Destroy(T obj);
+        public void Destroy(T? obj);
         /// <summary>
         ///     Removes the object from the pool.
         /// </summary>
         /// <param name="obj"></param>
-        public void Obliterate(T obj);
+        public void Obliterate(T? obj);
     }
 }
