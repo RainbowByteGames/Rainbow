@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow.State
+namespace RainbowByte.Rainbow.State
 {
     /// <summary>
     ///     Manages multiple game states.

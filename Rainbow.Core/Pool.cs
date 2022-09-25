@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow
+﻿namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     An abstract pooling structure with active and inactive pools.

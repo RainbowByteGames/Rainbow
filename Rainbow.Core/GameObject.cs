@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow
+namespace RainbowByte.Rainbow
 {
     public abstract class GameObject : IGameObject
     {

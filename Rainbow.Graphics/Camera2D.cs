@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow.Graphics
+namespace RainbowByte.Rainbow.Graphics
 {
     /// <summary>
     ///     A class which can project and unproject a virtual resolution onto

@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow.Physics
+﻿namespace RainbowByte.Rainbow.Physics
 {
     /// <summary>
     ///     An interface which describes a 2D collider.

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow
+namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     An interface containing game methods which a single object would need.

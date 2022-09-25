@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace HappiiDreamer.Rainbow.Graphics
+namespace RainbowByte.Rainbow.Graphics
 {
     /// <summary>
     ///     Some extension methods for the SpriteBatch.

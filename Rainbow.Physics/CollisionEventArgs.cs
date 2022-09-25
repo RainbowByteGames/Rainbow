@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow.Physics
+﻿namespace RainbowByte.Rainbow.Physics
 {
     public class CollisionEventArgs : EventArgs
     {

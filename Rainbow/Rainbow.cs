@@ -1,9 +1,9 @@
-﻿using HappiiDreamer.Rainbow.State;
+﻿using RainbowByte.Rainbow.State;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace HappiiDreamer.Rainbow
+namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     A static class that contains the latest RainbowGame instance.

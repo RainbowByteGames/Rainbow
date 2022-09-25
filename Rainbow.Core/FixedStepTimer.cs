@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow
+﻿namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     A StepTimer which each step is the same length.

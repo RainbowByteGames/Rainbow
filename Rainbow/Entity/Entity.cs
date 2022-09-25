@@ -1,7 +1,7 @@
-﻿using HappiiDreamer.Rainbow.Physics;
+﻿using RainbowByte.Rainbow.Physics;
 using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow.Entity
+namespace RainbowByte.Rainbow.Entity
 {
     public abstract class Entity : GameObject
     {

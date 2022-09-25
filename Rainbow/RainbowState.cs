@@ -1,8 +1,8 @@
-﻿using HappiiDreamer.Rainbow.Graphics;
+﻿using RainbowByte.Rainbow.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace HappiiDreamer.Rainbow.State
+namespace RainbowByte.Rainbow.State
 {
     public abstract class RainbowState : GameState
     {

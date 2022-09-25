@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace HappiiDreamer.Rainbow.State
+namespace RainbowByte.Rainbow.State
 {
     /// <summary>
     ///     A class which represents a game state and attempts to mirror

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow
+namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     An interface containing all relavent methods for a high level game system.

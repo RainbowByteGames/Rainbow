@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow.Entity
+namespace RainbowByte.Rainbow.Entity
 {
     public abstract class EntitySystem<T> : GameSystem, IEnumerable<T> where T : Entity
     {

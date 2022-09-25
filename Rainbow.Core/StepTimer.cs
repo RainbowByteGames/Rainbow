@@ -1,4 +1,4 @@
-﻿namespace HappiiDreamer.Rainbow
+﻿namespace RainbowByte.Rainbow
 {
     /// <summary>
     ///     A class for evaluating smooth time into steps.

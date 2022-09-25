@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HappiiDreamer.Rainbow.Physics
+namespace RainbowByte.Rainbow.Physics
 {
     public class KineticBody2D : Collidable
     {
