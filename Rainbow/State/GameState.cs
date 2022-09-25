@@ -8,7 +8,7 @@ namespace RainbowByte.Rainbow.State
     ///     A class which represents a game state and attempts to mirror
     ///     the main Game class.
     /// </summary>
-    public abstract class GameState : IGameState
+    public abstract class GameState : IGameSystem
     {
         /// <summary>
         ///     Gets the game this state belongs to.
@@ -76,13 +76,13 @@ namespace RainbowByte.Rainbow.State
         ///     enters the state. The instance will be a
         ///     fresh instance.
         /// </summary>
-        public abstract void Enter(IGameState? from);
+        public abstract void Enter(GameState? from);
         /// <summary>
         ///     This is called when the state manager
         ///     leaves the state. The instance is destoried
         ///     afterwords.
         /// </summary>
-        public virtual void Leave(IGameState? to) { }
+        public virtual void Leave(GameState? to) { }
 
         /// <summary>
         ///     Updates the game state.

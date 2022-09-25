@@ -31,7 +31,7 @@ namespace RainbowByte.Rainbow.State
         /// </summary>
         /// <typeparam name="T">The type of state.</typeparam>
         /// <returns>The id of the added state.</returns>
-        public int AddState<T>() where T : IGameState
+        public int AddState<T>() where T : GameState
         {
             States.Add(typeof(T));
             return States.Count - 1;
