@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow
+﻿namespace RainbowByte.Rainbow.Util
 {
     /// <summary>
     ///     An abstract pooling structure with active and inactive pools.
