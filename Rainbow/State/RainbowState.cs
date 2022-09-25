@@ -28,8 +28,6 @@ namespace RainbowByte.Rainbow.State
         /// </summary>
         public int ID { get; }
 
-        public int UpdatePriority => throw new NotImplementedException();
-
         public RainbowState(StateManager states, int id)
         {
             States = states;
