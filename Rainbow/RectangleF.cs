@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     /// <summary>
     ///     The floating-point equivalent of Microsoft.Xna.Framework.Rectangle

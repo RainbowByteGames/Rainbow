@@ -1,9 +1,9 @@
-﻿using RainbowByte.Rainbow.State;
+﻿using RainbowByte.Engine.State;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     /// <summary>
     ///     A static class that contains the latest RainbowGame instance.

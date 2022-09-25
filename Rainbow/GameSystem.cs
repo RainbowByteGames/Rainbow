@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     public abstract class GameSystem : IGameSystem
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RainbowByte.Rainbow.Graphics
+namespace RainbowByte.Engine.Graphics
 {
     /// <summary>
     ///     Some extension methods for the SpriteBatch.

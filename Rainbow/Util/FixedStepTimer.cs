@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow.Util
+﻿namespace RainbowByte.Engine.Util
 {
     /// <summary>
     ///     A StepTimer which each step is the same length.

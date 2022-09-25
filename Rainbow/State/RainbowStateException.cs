@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow.State
+﻿namespace RainbowByte.Engine.State
 {
     /// <summary>
     ///     An exception for state errors.

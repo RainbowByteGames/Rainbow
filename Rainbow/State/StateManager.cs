@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow.State
+namespace RainbowByte.Engine.State
 {
     /// <summary>
     ///     Manages multiple game states.

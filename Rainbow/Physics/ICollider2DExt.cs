@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow.Physics
+﻿namespace RainbowByte.Engine.Physics
 {
     public static class ICollider2DExt
     {

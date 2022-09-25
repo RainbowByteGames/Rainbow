@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     /// <summary>
     ///     An interface containing game methods which a single object would need.

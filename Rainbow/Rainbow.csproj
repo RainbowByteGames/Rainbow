@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>RainbowByte.$(MSBuildProjectName)</AssemblyName>
-    <RootNamespace>$(AssemblyName.Replace(" ", "_"))</RootNamespace>
+    <RootNamespace>RainbowByte.Engine</RootNamespace>
     <Version>0.2.0-pre.3</Version>
     <Authors>HappiiDreamer</Authors>
     <Description>A general purpose MonoGame library with state management, basic collisions, and more.</Description>

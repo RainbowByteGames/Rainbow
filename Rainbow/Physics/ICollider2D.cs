@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow.Physics
+﻿namespace RainbowByte.Engine.Physics
 {
     /// <summary>
     ///     An interface which describes a 2D collider.

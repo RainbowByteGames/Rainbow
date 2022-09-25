@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RainbowByte.Rainbow.Graphics
+namespace RainbowByte.Engine.Graphics
 {
     /// <summary>
     ///     A drawable object module for rendering sprites to the screen.

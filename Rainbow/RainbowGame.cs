@@ -1,8 +1,8 @@
-﻿using RainbowByte.Rainbow.State;
+﻿using RainbowByte.Engine.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     public abstract class RainbowGame : Game
     {

@@ -1,4 +1,4 @@
-﻿namespace RainbowByte.Rainbow
+﻿namespace RainbowByte.Engine
 {
     /// <summary>
     ///     A class for evaluating smooth time into steps.

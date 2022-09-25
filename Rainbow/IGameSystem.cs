@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow
+namespace RainbowByte.Engine
 {
     /// <summary>
     ///     An interface containing all relavent methods for a high level game system.

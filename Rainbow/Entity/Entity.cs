@@ -1,8 +1,8 @@
-﻿using RainbowByte.Rainbow.Physics;
+﻿using RainbowByte.Engine.Physics;
 using Microsoft.Xna.Framework;
-using RainbowByte.Rainbow.Graphics;
+using RainbowByte.Engine.Graphics;
 
-namespace RainbowByte.Rainbow.Entity
+namespace RainbowByte.Engine.Entity
 {
     public abstract class Entity : GameObject
     {

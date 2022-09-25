@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow.Physics
+namespace RainbowByte.Engine.Physics
 {
     public abstract class Collidable : GameObject
     {

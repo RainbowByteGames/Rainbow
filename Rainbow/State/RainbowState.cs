@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using RainbowByte.Rainbow.Graphics;
+using RainbowByte.Engine.Graphics;
 
-namespace RainbowByte.Rainbow.State
+namespace RainbowByte.Engine.State
 {
     /// <summary>
     ///     A class which represents a game state and attempts to mirror

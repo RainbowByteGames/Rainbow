@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace RainbowByte.Rainbow.Graphics
+namespace RainbowByte.Engine.Graphics
 {
     /// <summary>
     ///     A class which can project and unproject a virtual resolution onto
