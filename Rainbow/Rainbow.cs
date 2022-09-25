@@ -10,6 +10,8 @@ namespace HappiiDreamer.Rainbow
     /// </summary>
     public static class Rainbow
     {
+        // THIS IS A TEST COMMIT!
+
         internal static RainbowGame? _instance;
         /// <summary>
         ///     Gets the latest RainbowGame instance.
