@@ -15,6 +15,7 @@ namespace RainbowByte.Rainbow
         public IGameObject? Parent { get; }
 
         public bool IsUpdatable { get; }
+        public int UpdatePriority { get; }
         public void Update(GameTime gameTime);
 
         public bool IsDrawable { get; }

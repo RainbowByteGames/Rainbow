@@ -4,7 +4,8 @@ namespace RainbowByte.Rainbow
 {
     public abstract class GameSystem : IGameSystem
     {
-        public IGameObject? Parent { get; set; }
+        public virtual int UpdatePriority { get; } = 0;
+        public virtual IGameObject? Parent { get; set; }
         public abstract bool IsUpdatable { get; }
         public abstract bool IsDrawable { get; }
 
