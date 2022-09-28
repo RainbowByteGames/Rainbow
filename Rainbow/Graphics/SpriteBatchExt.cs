@@ -24,5 +24,36 @@ namespace RainbowByte.Engine.Graphics
                 Y = sprite.Origin.Y * sprite.SourceRectangle.Height
             }, scale / sprite.PixelsPerUnit, sprite.Effects, z);
         }
+        /// <summary>
+        ///     Draws a texture using a transform.
+        /// </summary>
+        /// <param name="batch"></param>
+        /// <param name="texture"></param>
+        /// <param name="transform"></param>
+        public static void Draw(this SpriteBatch batch, Texture2D texture, Transform transform)
+        {
+            batch.Draw(texture, transform.Position, transform.SourceRectangle, transform.Color, transform.Rotation, new Vector2
+            {
+                X = transform.Origin.X * transform.SourceRectangle.Width,
+                Y = transform.Origin.Y * transform.SourceRectangle.Height
+            }, transform.Scale / transform.PixelsPerUnit, transform.Effects, transform.Z);
+        }
+
+        /// <summary>
+        ///     Draws text using a transform.
+        /// </summary>
+        /// <param name="batch"></param>
+        /// <param name="font"></param>
+        /// <param name="text"></param>
+        /// <param name="transform"></param>
+        public static void DrawString(this SpriteBatch batch, SpriteFont font, string text, Transform transform)
+        {
+            Vector2 size = font.MeasureString(text);
+            batch.DrawString(font, text, transform.Position, transform.Color, transform.Rotation, new Vector2
+            {
+                X = transform.Origin.X * size.X,
+                Y = transform.Origin.Y * size.Y
+            }, transform.Scale / transform.PixelsPerUnit, transform.Effects, transform.Z);
+        }
     }
 }
